@@ -1,0 +1,22 @@
+{
+  "name": "naver-news-alrm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "news": "serverless invoke local --function news --path new-event.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^12.0.4",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "axios": "^1.5.0",
+    "dayjs": "^1.11.9"
+  }
+}

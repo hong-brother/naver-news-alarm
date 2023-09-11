@@ -1,0 +1,27 @@
+service: naver-news-alarm
+frameworkVersion: '3'
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-northeast-2
+  environment:
+    clientId: ''
+    secret: ''
+
+functions:
+  check:
+    handler: handler.check
+    events:
+      - httpApi:
+          path: /check
+          method: get
+  news:
+    handler: handler.news
+    events:
+      - httpApi:
+          path: /news
+          method: get
