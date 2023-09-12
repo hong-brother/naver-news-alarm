@@ -3,14 +3,17 @@ frameworkVersion: '3'
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-dotenv-plugin
 
 provider:
   name: aws
   runtime: nodejs18.x
   region: ap-northeast-2
   environment:
-    clientId: ''
-    secret: ''
+    NAVER_NEWS_CLIENT_ID:
+    NAVER_NEWS_SECRET_KEY:
+    NAVER_URL_CLIENT_ID:
+    NAVER_URL_SECRET_KEY:
 
 functions:
   check:

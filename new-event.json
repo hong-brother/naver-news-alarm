@@ -1,5 +1,6 @@
 {
-  "pathParameters": {
-    "startDate": "2023-09-11"
+  "queryStringParameters": {
+    "previousDate": "0",
+    "keyword": "관세청"
   }
 }
