@@ -5,11 +5,11 @@ import winstonDaily from 'winston-daily-rotate-file';
 import { LOG_DIR } from '@config';
 
 // logs dir
-const logDir: string = join(__dirname, LOG_DIR);
+// const logDir: string = join(__dirname, LOG_DIR);
 
-if (!existsSync(logDir)) {
-  mkdirSync(logDir);
-}
+// if (!existsSync(logDir)) {
+//   mkdirSync(logDir);
+// }
 
 // Define log format
 const logFormat = winston.format.printf(({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`);
@@ -27,26 +27,26 @@ const logger = winston.createLogger({
   ),
   transports: [
     // debug log setting
-    new winstonDaily({
-      level: 'debug',
-      datePattern: 'YYYY-MM-DD',
-      dirname: logDir + '/debug', // log file /logs/debug/*.log in save
-      filename: `%DATE%.log`,
-      maxFiles: 30, // 30 Days saved
-      json: false,
-      zippedArchive: true,
-    }),
-    // error log setting
-    new winstonDaily({
-      level: 'error',
-      datePattern: 'YYYY-MM-DD',
-      dirname: logDir + '/error', // log file /logs/error/*.log in save
-      filename: `%DATE%.log`,
-      maxFiles: 30, // 30 Days saved
-      handleExceptions: true,
-      json: false,
-      zippedArchive: true,
-    }),
+    // new winstonDaily({
+    //   level: 'debug',
+    //   datePattern: 'YYYY-MM-DD',
+    //   dirname: logDir + '/debug', // log file /logs/debug/*.log in save
+    //   filename: `%DATE%.log`,
+    //   maxFiles: 30, // 30 Days saved
+    //   json: false,
+    //   zippedArchive: true,
+    // }),
+    // // error log setting
+    // new winstonDaily({
+    //   level: 'error',
+    //   datePattern: 'YYYY-MM-DD',
+    //   dirname: logDir + '/error', // log file /logs/error/*.log in save
+    //   filename: `%DATE%.log`,
+    //   maxFiles: 30, // 30 Days saved
+    //   handleExceptions: true,
+    //   json: false,
+    //   zippedArchive: true,
+    // }),
   ],
 });
 
