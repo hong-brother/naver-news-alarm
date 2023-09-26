@@ -20,8 +20,8 @@ export class App {
 
   constructor(routes: Routes[]) {
     this.app = express();
-    this.env = NODE_ENV || 'development';
-    this.port = PORT || 3000;
+    this.env = 'development';
+    this.port = 3000;
 
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
