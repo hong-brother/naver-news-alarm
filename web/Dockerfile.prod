@@ -1,5 +1,5 @@
 # NodeJS Version 16
-FROM node:16.18-buster-slim
+FROM node:20.8.0-slim
 
 # Copy Dir
 COPY . ./app
@@ -14,5 +14,7 @@ RUN npm install --legacy-peer-deps
 ENV NODE_ENV production
 EXPOSE 3000
 
+RUN npm run build
+
 # Cmd script
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start:prod"]
