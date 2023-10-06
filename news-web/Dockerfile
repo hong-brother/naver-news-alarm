@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM node:20-alpine as builder
 
 ENV NODE_ENV build
 
@@ -13,7 +13,7 @@ RUN yarn build
 
 # ---
 
-FROM node:18-alpine
+FROM node:20-alpine
 
 RUN apk add --no-cache tini
 
@@ -27,4 +27,4 @@ COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
 EXPOSE 3000
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "dist/app.js"]
+CMD ["node", "dist/src/app.js"]
