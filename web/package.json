@@ -13,9 +13,7 @@
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
     "lint:fix": "npm run lint -- --fix",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
-    "deploy:dev": "pm2 start ecosystem.config.js --only dev",
-    "vercel-dev": "cross-env NODE_ENV=development vercel dev",
-    "vercel-deploy": "vercel deploy"
+    "deploy:dev": "pm2 start ecosystem.config.js --only dev"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -79,6 +77,6 @@
   },
   "packageManager": "yarn@3.6.4",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
