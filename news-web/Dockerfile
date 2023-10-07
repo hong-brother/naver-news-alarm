@@ -1,30 +1,11 @@
-FROM node:20-alpine as builder
+FROM oven/bun
 
-ENV NODE_ENV build
+WORKDIR /usr/src/app
 
-USER node
-WORKDIR /home/node
+COPY package*.json bun.lockb ./
+RUN bun install
+COPY . .
 
-COPY package*.json ./
-RUN yarn
+ENV NODE_ENV production
 
-COPY --chown=node:node . .
-RUN yarn build
-
-# ---
-
-FROM node:20-alpine
-
-RUN apk add --no-cache tini
-
-USER node
-WORKDIR /home/node
-
-COPY --from=builder --chown=node:node /home/node/package*.json ./
-COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
-COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
-
-EXPOSE 3000
-
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "dist/src/app.js"]
+CMD [ "bun", "start" ]
