@@ -1,26 +1,23 @@
 import express, { Request, Response } from "express";
 import {News} from "./services/news";
+import {Shorturl} from "./services/shorturl";
 
 const app = express();
 const news = new News();
-
-type Data = {
-    name: string;
-    age: number;
-    url: string;
-};
-
-const sendData: Data = {
-    name: "name",
-    age: 3,
-    url: "tistory.com",
-};
+const short = new Shorturl(process.env.REDIS_URL || '', "test");
 
 app.get("/news", async (req: Request, res: Response) => {
     const { keyword, previousDate } = req.query;
     const data = await news.news(String(keyword), Number(previousDate));
     res.send(data);
 });
+
+app.get('/short-url', async (req: Request, res: Response) => {
+    // temp
+    const { url } = req.query;
+    res.send(short.makeShortUrl(String(url)));
+
+})
 
 app.get("/", (req: Request, res: Response) => {
     const html = `

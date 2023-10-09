@@ -168,7 +168,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/naver-news-alarm/dev/1694530819843-2023-09-12T15:00:19.843Z/naver-news-alarm.zip"
+          "S3Key": "serverless/naver-news-alarm/dev/1696843068715-2023-10-09T09:17:48.715Z/naver-news-alarm.zip"
         },
         "Handler": "handler.check",
         "Runtime": "nodejs18.x",
@@ -176,12 +176,7 @@
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
-          "Variables": {
-            "NAVER_NEWS_CLIENT_ID": "jEwSFlwHisNUYQatnyzm",
-            "NAVER_NEWS_SECRET_KEY": "KJqiUrOVJz",
-            "NAVER_URL_CLIENT_ID": "VoV7LSJdg26YxUiBR9C5",
-            "NAVER_URL_SECRET_KEY": "fbjNhGGNds"
-          }
+          "Variables": {}
         },
         "Role": {
           "Fn::GetAtt": [
@@ -201,7 +196,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/naver-news-alarm/dev/1694530819843-2023-09-12T15:00:19.843Z/naver-news-alarm.zip"
+          "S3Key": "serverless/naver-news-alarm/dev/1696843068715-2023-10-09T09:17:48.715Z/naver-news-alarm.zip"
         },
         "Handler": "handler.news",
         "Runtime": "nodejs18.x",
@@ -209,12 +204,7 @@
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
-          "Variables": {
-            "NAVER_NEWS_CLIENT_ID": "jEwSFlwHisNUYQatnyzm",
-            "NAVER_NEWS_SECRET_KEY": "KJqiUrOVJz",
-            "NAVER_URL_CLIENT_ID": "VoV7LSJdg26YxUiBR9C5",
-            "NAVER_URL_SECRET_KEY": "fbjNhGGNds"
-          }
+          "Variables": {}
         },
         "Role": {
           "Fn::GetAtt": [
@@ -227,24 +217,24 @@
         "NewsLogGroup"
       ]
     },
-    "CheckLambdaVersionTLhFwVd9UAK97UOOebCOjBaNt6DIphGbZLyvhXmmE": {
+    "CheckLambdaVersioniSJmFb7oetpSJG1y7B48uIR1Rc8ZMdYDZ4fRXeQk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CheckLambdaFunction"
         },
-        "CodeSha256": "EicG+ha23mETtnAyhoLiHBUz8zDhMkh++/ryiurrr4M="
+        "CodeSha256": "C5Jm+UJks/AdSEW8wjVxTPUhT8W0mm/ivSfdSBhGC30="
       }
     },
-    "NewsLambdaVersionv2yBzz0zcdWl76zYTztOxOkl1TPAakshA2AsMEVU0": {
+    "NewsLambdaVersionmntLlpmwAbpB8Vz8huHoss5l0LmJ5U0t4eyehzFL9w": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NewsLambdaFunction"
         },
-        "CodeSha256": "EicG+ha23mETtnAyhoLiHBUz8zDhMkh++/ryiurrr4M="
+        "CodeSha256": "C5Jm+UJks/AdSEW8wjVxTPUhT8W0mm/ivSfdSBhGC30="
       }
     },
     "HttpApi": {
@@ -430,7 +420,7 @@
     "CheckLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CheckLambdaVersionTLhFwVd9UAK97UOOebCOjBaNt6DIphGbZLyvhXmmE"
+        "Ref": "CheckLambdaVersioniSJmFb7oetpSJG1y7B48uIR1Rc8ZMdYDZ4fRXeQk"
       },
       "Export": {
         "Name": "sls-naver-news-alarm-dev-CheckLambdaFunctionQualifiedArn"
@@ -439,7 +429,7 @@
     "NewsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NewsLambdaVersionv2yBzz0zcdWl76zYTztOxOkl1TPAakshA2AsMEVU0"
+        "Ref": "NewsLambdaVersionmntLlpmwAbpB8Vz8huHoss5l0LmJ5U0t4eyehzFL9w"
       },
       "Export": {
         "Name": "sls-naver-news-alarm-dev-NewsLambdaFunctionQualifiedArn"
