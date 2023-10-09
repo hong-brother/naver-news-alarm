@@ -1,15 +1,25 @@
-const express = require("express");
+import express, { Request, Response } from "express";
+
 const app = express();
-const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => res.type('html').send(html));
+type Data = {
+    name: string;
+    age: number;
+    url: string;
+};
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const sendData: Data = {
+    name: "name",
+    age: 3,
+    url: "tistory.com",
+};
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
+app.get("/test", (req: Request, res: Response) => {
+    res.send(sendData);
+});
 
-const html = `
+app.get("/", (req: Request, res: Response) => {
+    const html = `
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,3 +69,9 @@ const html = `
   </body>
 </html>
 `
+  res.send(html);
+})
+
+const port = process.env.PORT || 3001;
+console.log(port);
+app.listen(port)
