@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express";
+import {News} from "./services/news";
 
 const app = express();
+const news = new News();
 
 type Data = {
     name: string;
@@ -14,8 +16,10 @@ const sendData: Data = {
     url: "tistory.com",
 };
 
-app.get("/test", (req: Request, res: Response) => {
-    res.send(sendData);
+app.get("/news", async (req: Request, res: Response) => {
+    const { keyword, previousDate } = req.query;
+    const data = await news.news(String(keyword), Number(previousDate));
+    res.send(data);
 });
 
 app.get("/", (req: Request, res: Response) => {
