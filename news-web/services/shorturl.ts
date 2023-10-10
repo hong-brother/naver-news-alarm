@@ -1,19 +1,20 @@
-import { createClient } from 'redis';
-import * as nanoid from 'nanoid'
-export class Shorturl {
+import * as nano from 'nanoid'
+
+export class ShortUrl {
     private client;
     private domain: string;
-    constructor(url: string, domain: string) {
-        this.client = createClient({
-            url
-        });
+    // @ts-ignore
+    constructor(client, domain: string) {
+        this.client = client
+        debugger;
         this.domain = domain;
     }
 
     makeShortUrl(originUrl: string) {
         try{
-            // const id = nanoid.nanoid();
-            return `https://${this.domain}/12`
+            const id = nano.nanoid();
+            this.client.set(id, originUrl, 'EX', 86400);
+            return `https://${this.domain}/${id}`
         }catch (e) {
             return new Error('ERROR');
         }

@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
 import {News} from "./services/news";
-import {Shorturl} from "./services/shorturl";
+import {ShortUrl} from "./services/shorturl";
+import Redis from "ioredis";
 
 const app = express();
 const news = new News();
-const short = new Shorturl(process.env.REDIS_URL || '', "test");
+const client = new Redis(String(process.env.REDIS_URL));
+const short = new ShortUrl(client, "test");
 
 app.get("/news", async (req: Request, res: Response) => {
     const { keyword, previousDate } = req.query;
