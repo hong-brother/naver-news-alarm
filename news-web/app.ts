@@ -6,7 +6,7 @@ import Redis from "ioredis";
 const app = express();
 const news = new News();
 const client = new Redis(String(process.env.REDIS_URL));
-const short = new ShortUrl(client, "test");
+const short = new ShortUrl(client, "express-hello-g2tt.onrender.com");
 
 app.get("/news", async (req: Request, res: Response) => {
     const { keyword, previousDate } = req.query;
@@ -18,10 +18,17 @@ app.get('/short-url', async (req: Request, res: Response) => {
     // temp
     const { url } = req.query;
     res.send(short.makeShortUrl(String(url)));
+});
 
+app.get('/', async (req: Request, res: Response) => {
+    const { id } = req.query;
+    const test = await short.findUrlById(String(id))
+
+    res.redirect(test);
 })
 
-app.get("/", (req: Request, res: Response) => {
+
+app.get("/welcome", (req: Request, res: Response) => {
     const html = `
 <!DOCTYPE html>
 <html>

@@ -6,17 +6,24 @@ export class ShortUrl {
     // @ts-ignore
     constructor(client, domain: string) {
         this.client = client
-        debugger;
         this.domain = domain;
     }
 
     makeShortUrl(originUrl: string) {
         try{
             const id = nano.nanoid();
-            this.client.set(id, originUrl, 'EX', 86400);
+            this.client.set(id, originUrl, 'EX', 86400); // 하루 TTL
             return `https://${this.domain}/${id}`
-        }catch (e) {
-            return new Error('ERROR');
+        } catch (e) {
+            throw new Error('error')
+        }
+    }
+
+    async findUrlById(id: string): Promise<string> {
+        try{
+            return await this.client.get(id);
+        } catch (e) {
+            throw new Error('error')
         }
     }
 }
