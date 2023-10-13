@@ -6,7 +6,7 @@ import Redis from "ioredis";
 const app = express();
 const news = new News();
 const client = new Redis(String(process.env.REDIS_URL));
-const short = new ShortUrl(client, "express-hello-g2tt.onrender.com");
+const short = new ShortUrl(client, "hsnam.work");
 
 app.get("/news", async (req: Request, res: Response) => {
     const { keyword, previousDate } = req.query;
