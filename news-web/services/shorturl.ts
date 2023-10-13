@@ -13,7 +13,7 @@ export class ShortUrl {
         try{
             const id = nano.nanoid();
             this.client.set(id, originUrl, 'EX', 86400); // 하루 TTL
-            return `https://${this.domain}?id=${id}`
+            return `https://${this.domain}/u?id=${id}`
         } catch (e) {
             throw new Error('error')
         }
