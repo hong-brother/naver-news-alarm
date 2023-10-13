@@ -20,7 +20,7 @@ app.get('/short-url', async (req: Request, res: Response) => {
     res.send(short.makeShortUrl(String(url)));
 });
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/u', async (req: Request, res: Response) => {
     const { id } = req.query;
     const test = await short.findUrlById(String(id))
 
@@ -28,7 +28,7 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 
-app.get("/welcome", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
     const html = `
 <!DOCTYPE html>
 <html>
